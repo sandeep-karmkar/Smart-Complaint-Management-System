@@ -1,0 +1,111 @@
+{% extends 'auth_base.html' %}
+
+{% block content %}
+
+<div class="auth-card">
+
+    <!-- ================= LOGO ================= -->
+
+    <div class="logo">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h1>ServiQ</h1>
+
+        <p class="text-light-custom">
+
+            Complaint Management System
+
+        </p>
+
+    </div>
+
+    <!-- ================= HEADING ================= -->
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold">
+
+            Create Account ✨
+
+        </h2>
+
+        <p class="text-light-custom">
+
+            Register to access your dashboard
+
+        </p>
+
+    </div>
+
+    <!-- ================= FORM ================= -->
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <label class="mb-2 fw-semibold">
+
+                Username
+
+            </label>
+
+            <input type="text"
+                   name="username"
+                   class="form-control custom-input"
+                   placeholder="Choose Username"
+                   required>
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="mb-2 fw-semibold">
+
+                Password
+
+            </label>
+
+            <input type="password"
+                   name="password"
+                   class="form-control custom-input"
+                   placeholder="Create Password"
+                   required>
+
+        </div>
+
+        <button type="submit"
+                class="auth-btn">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Register
+
+        </button>
+
+    </form>
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="text-center mt-4">
+
+        <p class="mb-0 text-light-custom">
+
+            Already have an account?
+
+            <a href="/"
+               class="auth-link">
+
+                Login
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

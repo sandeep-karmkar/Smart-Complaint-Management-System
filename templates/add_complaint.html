@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ================= PAGE HEADER ================= -->
+
+<div class="d-flex
+            justify-content-between
+            align-items-center
+            mb-4
+            flex-wrap
+            gap-3">
+
+    <div>
+
+        <h2 class="fw-bold page-title">
+
+            <i class="fa-solid fa-pen-to-square text-primary"></i>
+
+            Add Complaint
+
+        </h2>
+
+        <p class="text-muted mb-0 page-subtitle">
+
+            Submit your issue with complete details
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= FORM SECTION ================= -->
+
+<div class="row justify-content-center">
+
+    <div class="col-12 col-lg-8">
+
+        <div class="custom-card add-card">
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <!-- ================= FORM ================= -->
+
+                <div class="form-area">
+
+                    {{ form.as_p }}
+
+                </div>
+
+                <!-- ================= BUTTON ================= -->
+
+                <button type="submit"
+                        class="btn btn-primary
+                               w-100
+                               py-3
+                               rounded-4
+                               fw-semibold
+                               submit-btn
+                               mt-3">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Complaint
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= CUSTOM STYLE ================= -->
+
+<style>
+
+/* ================= TITLE ================= */
+
+.page-title{
+
+    font-size:34px;
+}
+
+.page-subtitle{
+
+    font-size:15px;
+}
+
+/* ================= FORM ================= */
+
+.form-area p{
+
+    margin-bottom:24px;
+}
+
+.form-area label{
+
+    display:block;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+    color:#111827;
+}
+
+.form-area input,
+.form-area textarea,
+.form-area select{
+
+    width:100%;
+
+    border:1px solid #d1d5db;
+
+    border-radius:16px;
+
+    padding:15px 18px;
+
+    outline:none;
+
+    transition:0.3s;
+
+    background:white;
+
+    font-size:15px;
+}
+
+.form-area input:focus,
+.form-area textarea:focus,
+.form-area select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+}
+
+.form-area textarea{
+
+    min-height:160px;
+
+    resize:none;
+}
+
+.form-area input[type="file"]{
+
+    padding:14px;
+}
+
+/* ================= BUTTON ================= */
+
+.submit-btn{
+
+    font-size:16px;
+
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+/* ================= DARK MODE ================= */
+
+.dark-mode .form-area label{
+
+    color:white;
+}
+
+.dark-mode .form-area input,
+.dark-mode .form-area textarea,
+.dark-mode .form-area select{
+
+    background:#1e293b;
+
+    color:white;
+
+    border:1px solid #334155;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.page-title{
+
+    font-size:28px;
+}
+
+.page-subtitle{
+
+    font-size:14px;
+}
+
+.add-card{
+
+    padding:22px 18px !important;
+}
+
+.form-area input,
+.form-area textarea,
+.form-area select{
+
+    font-size:14px;
+
+    padding:14px;
+}
+
+.form-area textarea{
+
+    min-height:130px;
+}
+
+.submit-btn{
+
+    font-size:15px;
+
+    padding:14px !important;
+}
+
+}
+
+</style>
+
+{% endblock %}

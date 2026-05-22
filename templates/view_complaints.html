@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ================= PAGE HEADER ================= -->
+
+<div class="d-flex
+            justify-content-between
+            align-items-center
+            flex-wrap
+            gap-3
+            mb-4">
+
+    <div>
+
+        <h2 class="fw-bold page-title">
+
+            <i class="fa-solid fa-clipboard-list text-primary"></i>
+
+            Your Complaints
+
+        </h2>
+
+        <p class="text-muted mb-0 page-subtitle">
+
+            Manage and track all your complaints
+
+        </p>
+
+    </div>
+
+    <a href="/add/"
+       class="btn btn-primary
+              rounded-4
+              px-4
+              py-3
+              fw-semibold
+              add-btn">
+
+        <i class="fa-solid fa-circle-plus"></i>
+
+        Add Complaint
+
+    </a>
+
+</div>
+
+<!-- ================= SEARCH ================= -->
+
+<div class="custom-card mb-4 search-card">
+
+    <form method="GET">
+
+        <input type="text"
+               name="search"
+               class="form-control custom-input"
+               placeholder="🔍 Search Complaint">
+
+    </form>
+
+</div>
+
+<!-- ================= COMPLAINTS ================= -->
+
+{% for complaint in complaints %}
+
+<div class="complaint-card mb-4">
+
+    <div class="d-flex
+                justify-content-between
+                align-items-start
+                flex-wrap
+                gap-3">
+
+        <!-- ================= LEFT ================= -->
+
+        <div class="flex-grow-1">
+
+            <h4 class="fw-bold complaint-title mb-3">
+
+                {{ complaint.title }}
+
+            </h4>
+
+            <p class="text-muted complaint-desc">
+
+                {{ complaint.description }}
+
+            </p>
+
+            <!-- ================= STATUS ================= -->
+
+            {% if complaint.status == 'Pending' %}
+
+            <span class="badge
+                         bg-warning
+                         text-dark
+                         px-4
+                         py-2
+                         rounded-pill
+                         mt-2">
+
+                {{ complaint.status }}
+
+            </span>
+
+            {% elif complaint.status == 'Resolved' %}
+
+            <span class="badge
+                         bg-success
+                         px-4
+                         py-2
+                         rounded-pill
+                         mt-2">
+
+                {{ complaint.status }}
+
+            </span>
+
+            {% else %}
+
+            <span class="badge
+                         bg-info
+                         px-4
+                         py-2
+                         rounded-pill
+                         mt-2">
+
+                {{ complaint.status }}
+
+            </span>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ================= DELETE ================= -->
+
+        <div class="delete-area">
+
+            <a href="/delete/{{ complaint.id }}/"
+               class="btn btn-danger
+                      rounded-4
+                      px-4
+                      py-2
+                      delete-btn">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Delete
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ================= IMAGE ================= -->
+
+    {% if complaint.image %}
+
+    <div class="text-center mt-4">
+
+        <img src="{{ complaint.image.url }}"
+             class="complaint-image">
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% empty %}
+
+<!-- ================= EMPTY STATE ================= -->
+
+<div class="custom-card text-center empty-state">
+
+    <h1 class="mb-3">
+
+        📭
+
+    </h1>
+
+    <h3 class="fw-bold">
+
+        No Complaints Found
+
+    </h3>
+
+    <p class="text-muted">
+
+        Add your first complaint now.
+
+    </p>
+
+    <a href="/add/"
+       class="btn btn-primary
+              rounded-4
+              px-4
+              py-3
+              mt-3">
+
+        <i class="fa-solid fa-circle-plus"></i>
+
+        Add Complaint
+
+    </a>
+
+</div>
+
+{% endfor %}
+
+<!-- ================= CUSTOM STYLE ================= -->
+
+<style>
+
+/* ================= TITLE ================= */
+
+.page-title{
+
+    font-size:34px;
+}
+
+.page-subtitle{
+
+    font-size:15px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-card{
+
+    padding:22px;
+}
+
+/* ================= COMPLAINT ================= */
+
+.complaint-title{
+
+    font-size:28px;
+}
+
+.complaint-desc{
+
+    line-height:1.8;
+}
+
+/* ================= IMAGE ================= */
+
+.complaint-image{
+
+    width:100%;
+
+    height:auto;
+
+    max-height:700px;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    background:#f8fafc;
+}
+
+/* ================= BUTTONS ================= */
+
+.add-btn,
+.delete-btn{
+
+    transition:0.3s;
+}
+
+.add-btn:hover,
+.delete-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+/* ================= EMPTY ================= */
+
+.empty-state{
+
+    padding:50px 25px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.page-title{
+
+    font-size:28px;
+}
+
+.page-subtitle{
+
+    font-size:14px;
+}
+
+.add-btn{
+
+    width:100%;
+}
+
+.search-card{
+
+    padding:18px;
+}
+
+.complaint-card{
+
+    padding:22px !important;
+}
+
+.complaint-title{
+
+    font-size:23px;
+}
+
+.complaint-desc{
+
+    font-size:15px;
+}
+
+.delete-area{
+
+    width:100%;
+}
+
+.delete-btn{
+
+    width:100%;
+}
+
+.complaint-image{
+
+    max-height:240px;
+}
+
+.empty-state{
+
+    padding:40px 20px;
+}
+
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ServiQ | Complaint Management System</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fe;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.custom-navbar{
+
+    background:linear-gradient(to right,
+    #071739,
+    #0b2c6a);
+
+    padding:16px 0;
+
+    box-shadow:0 4px 18px rgba(0,0,0,0.1);
+}
+
+/* ================= LOGO ================= */
+
+.navbar-brand{
+
+    color:white !important;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.navbar-brand i{
+
+    font-size:32px;
+}
+
+/* ================= NAV MENU ================= */
+
+.navbar-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.nav-link{
+
+    color:white !important;
+
+    font-weight:500;
+
+    font-size:15px;
+
+    padding:10px 18px !important;
+
+    border-radius:12px;
+
+    transition:0.3s;
+
+    margin:0 !important;
+}
+
+.nav-link:hover{
+
+    background:rgba(255,255,255,0.1);
+
+    color:#facc15 !important;
+}
+
+/* ================= BUTTONS ================= */
+
+.login-btn{
+
+    background:white;
+
+    color:#071739 !important;
+
+    border-radius:12px;
+
+    font-weight:600;
+}
+
+.register-btn{
+
+    background:#2563eb;
+
+    border-radius:12px;
+
+    font-weight:600;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+    padding:90px 0;
+}
+
+.hero-text h1{
+
+    font-size:68px;
+
+    font-weight:700;
+
+    color:#071739;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+}
+
+.hero-text p{
+
+    font-size:20px;
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+.hero-btn{
+
+    padding:15px 30px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    display:inline-block;
+
+    margin-right:15px;
+
+    transition:0.3s;
+}
+
+.primary-btn{
+
+    background:#2563eb;
+
+    color:white;
+}
+
+.primary-btn:hover{
+
+    background:#1e40af;
+}
+
+.secondary-btn{
+
+    background:white;
+
+    color:#071739;
+
+    border:1px solid #d1d5db;
+}
+
+.secondary-btn:hover{
+
+    background:#f3f4f6;
+}
+
+.hero-image{
+
+    text-align:center;
+}
+
+.hero-image i{
+
+    font-size:280px;
+
+    color:#2563eb;
+}
+
+/* ================= FEATURES ================= */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+}
+
+.section-title h2{
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:#071739;
+}
+
+.section-title p{
+
+    color:#6b7280;
+
+    margin-top:12px;
+}
+
+.feature-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+    transition:0.3s;
+
+    height:100%;
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+}
+
+.feature-card i{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+}
+
+.feature-card h3{
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+.feature-card p{
+
+    color:#6b7280;
+
+    line-height:1.7;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+
+    margin-top:90px;
+
+    background:linear-gradient(to right,
+    #2563eb,
+    #1e40af);
+
+    border-radius:35px;
+
+    padding:70px 50px;
+
+    color:white;
+}
+
+.about h2{
+
+    font-size:50px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+}
+
+.about p{
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+    margin-top:80px;
+
+    background:linear-gradient(to right,
+    #071739,
+    #0b2c6a);
+
+    padding:28px 20px;
+
+    color:white;
+
+    text-align:center;
+}
+
+.footer-bottom{
+
+    color:#cbd5e1;
+
+    font-size:15px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:992px){
+
+.hero{
+
+    text-align:center;
+
+    padding:60px 0;
+}
+
+.hero-text h1{
+
+    font-size:44px;
+}
+
+.hero-text p{
+
+    font-size:18px;
+}
+
+.hero-image{
+
+    margin-top:50px;
+}
+
+.hero-image i{
+
+    font-size:180px;
+}
+
+.about{
+
+    padding:45px 25px;
+
+    text-align:center;
+}
+
+.about h2{
+
+    font-size:38px;
+}
+
+.section-title h2{
+
+    font-size:38px;
+}
+
+.navbar-nav{
+
+    margin-top:18px;
+
+    width:100%;
+
+    gap:10px;
+}
+
+.nav-link{
+
+    width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg custom-navbar">
+
+<div class="container-fluid px-lg-5 px-4">
+
+    <!-- ================= LEFT LOGO ================= -->
+
+    <a class="navbar-brand"
+       href="/">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>ServiQ</span>
+
+    </a>
+
+    <!-- ================= TOGGLE ================= -->
+
+    <button class="navbar-toggler bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <!-- ================= RIGHT MENU ================= -->
+
+    <div class="collapse navbar-collapse justify-content-end"
+         id="navbarNav">
+
+        <ul class="navbar-nav align-items-lg-center">
+
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="#features">
+
+                    Features
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link"
+                   href="#about">
+
+                    About
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link login-btn"
+                   href="/login/">
+
+                    Login
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link register-btn"
+                   href="/register/">
+
+                    Register
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-6">
+
+            <div class="hero-text">
+
+                <h1>
+
+                    Complaint
+                    Management
+                    System 🚀
+
+                </h1>
+
+                <p>
+
+                    ServiQ helps organizations manage,
+                    track and resolve complaints efficiently
+                    with a modern and secure platform.
+
+                </p>
+
+                <a href="/register/"
+                   class="hero-btn primary-btn">
+
+                    Get Started
+
+                </a>
+
+                <a href="/login/"
+                   class="hero-btn secondary-btn">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="hero-image">
+
+                <i class="fa-solid fa-laptop-code"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+
+            Features
+
+        </h2>
+
+        <p>
+
+            Everything you need for efficient complaint handling
+
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-bolt text-primary"></i>
+
+                <h3>
+
+                    Fast Handling
+
+                </h3>
+
+                <p>
+
+                    Submit and manage complaints quickly
+                    with a smooth workflow.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-lock text-success"></i>
+
+                <h3>
+
+                    Secure System
+
+                </h3>
+
+                <p>
+
+                    Secure authentication and protected
+                    complaint management process.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chart-line text-warning"></i>
+
+                <h3>
+
+                    Real-Time Tracking
+
+                </h3>
+
+                <p>
+
+                    Track complaint status instantly
+                    from dashboard anytime.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="container">
+
+    <div class="about">
+
+        <h2>
+
+            About ServiQ
+
+        </h2>
+
+        <p>
+
+            ServiQ is a modern complaint management platform
+            designed to simplify complaint registration,
+            tracking and resolution for organizations,
+            institutions and businesses with a secure and
+            user-friendly experience.
+
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-bottom">
+
+        © 2026 Complaint Management System |
+        Designed by ResolveX 🚀
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,811 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ServiQ Dashboard</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fe;
+    transition:0.3s;
+}
+
+/* ================= DARK MODE ================= */
+
+.dark-mode{
+
+    background:#0f172a !important;
+
+    color:white !important;
+}
+
+.dark-mode .stats-card,
+.dark-mode .custom-card,
+.dark-mode .complaint-card{
+
+    background:#1e293b;
+
+    color:white;
+
+    box-shadow:none;
+}
+
+.dark-mode .text-muted{
+
+    color:#cbd5e1 !important;
+}
+
+.dark-mode .footer-bottom{
+
+    color:#dbeafe;
+}
+
+.dark-mode .custom-input{
+
+    background:#1e293b;
+
+    color:white;
+
+    border:1px solid #334155;
+}
+
+.dark-mode textarea{
+
+    background:#1e293b !important;
+
+    color:white !important;
+}
+
+/* ================= NAVBAR ================= */
+
+.custom-navbar{
+
+    background:linear-gradient(to right,
+    #071739,
+    #0b2c6a);
+
+    padding:16px 0;
+
+    box-shadow:0 4px 18px rgba(0,0,0,0.1);
+}
+
+.navbar-brand{
+
+    color:white !important;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.navbar-brand i{
+
+    font-size:32px;
+}
+
+.navbar-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.nav-custom-link{
+
+    color:white !important;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    padding:10px 18px !important;
+
+    border-radius:12px;
+
+    transition:0.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.nav-custom-link:hover{
+
+    background:rgba(255,255,255,0.1);
+
+    color:#facc15 !important;
+}
+
+/* ================= DARK BUTTON ================= */
+
+.dark-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-size:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:0.3s;
+}
+
+.dark-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn{
+
+    background:#ef4444;
+
+    color:white !important;
+
+    padding:10px 20px !important;
+
+    border-radius:12px !important;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.logout-btn:hover{
+
+    background:#dc2626 !important;
+}
+
+/* ================= ALERT ================= */
+
+.alert{
+
+    animation:slideDown 0.4s ease;
+}
+
+@keyframes slideDown{
+
+from{
+    transform:translateY(-20px);
+    opacity:0;
+}
+
+to{
+    transform:translateY(0);
+    opacity:1;
+}
+
+}
+
+/* ================= MAIN ================= */
+
+.main-content{
+
+    padding:30px;
+
+    max-width:1500px;
+
+    margin:auto;
+}
+
+/* ================= BANNER ================= */
+
+.banner{
+
+    background:linear-gradient(to right,
+    #2563eb,
+    #1e40af);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    color:white;
+
+    margin-bottom:35px;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:14px;
+
+    flex-wrap:nowrap;
+
+    margin-bottom:14px;
+}
+
+.welcome-text{
+
+    font-size:58px;
+
+    font-weight:700;
+
+    line-height:1.2;
+}
+
+.wave{
+
+    font-size:52px;
+
+    animation:waveAnim 2s infinite;
+}
+
+/* ================= SUBTITLE ================= */
+
+.banner-subtitle{
+
+    font-size:22px;
+
+    opacity:0.95;
+
+    font-weight:500;
+
+    letter-spacing:0.3px;
+
+    margin:0;
+}
+
+/* ================= WAVE ANIMATION ================= */
+
+@keyframes waveAnim{
+
+0%{
+    transform:rotate(0deg);
+}
+
+15%{
+    transform:rotate(14deg);
+}
+
+30%{
+    transform:rotate(-8deg);
+}
+
+40%{
+    transform:rotate(14deg);
+}
+
+50%{
+    transform:rotate(-4deg);
+}
+
+60%{
+    transform:rotate(10deg);
+}
+
+100%{
+    transform:rotate(0deg);
+}
+
+}
+
+/* ================= STATS ================= */
+
+.stats-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+    transition:0.3s;
+
+    height:100%;
+}
+
+.stats-card:hover{
+
+    transform:translateY(-8px);
+}
+
+.stats-card i{
+
+    font-size:50px;
+
+    margin-bottom:20px;
+}
+
+.stats-card h2{
+
+    font-size:45px;
+
+    font-weight:700;
+}
+
+/* ================= CARD ================= */
+
+.custom-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:35px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+}
+
+/* ================= FORM ================= */
+
+.custom-input{
+
+    height:55px;
+
+    border-radius:14px;
+
+    border:1px solid #d1d5db;
+
+    padding-left:15px;
+}
+
+.custom-input:focus{
+
+    box-shadow:none;
+
+    border-color:#2563eb;
+}
+
+textarea{
+
+    border-radius:14px !important;
+}
+
+/* ================= COMPLAINT CARD ================= */
+
+.complaint-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+    transition:0.3s;
+}
+
+.complaint-card:hover{
+
+    transform:translateY(-6px);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+    margin-top:70px;
+
+    background:linear-gradient(to right,
+    #071739,
+    #0b2c6a);
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    width:100%;
+
+    border-radius:24px;
+
+    box-shadow:0 4px 18px rgba(0,0,0,0.1);
+}
+
+.footer-bottom{
+
+    color:#dbeafe;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    letter-spacing:0.3px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:992px){
+
+.custom-navbar{
+
+    padding:14px 0;
+}
+
+.navbar-brand{
+
+    font-size:22px;
+}
+
+.navbar-brand i{
+
+    font-size:26px;
+}
+
+.navbar-toggler{
+
+    padding:6px 10px;
+}
+
+.navbar-nav{
+
+    margin-top:18px;
+
+    width:100%;
+
+    gap:10px;
+}
+
+.nav-custom-link,
+.logout-btn{
+
+    width:100%;
+
+    justify-content:center;
+}
+
+.dark-btn{
+
+    width:100%;
+
+    border-radius:12px;
+
+    height:50px;
+}
+
+.main-content{
+
+    padding:14px;
+}
+
+.banner{
+
+    padding:30px 20px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    margin-bottom:24px;
+}
+
+.welcome-title{
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:16px;
+}
+
+.welcome-text{
+
+    font-size:38px;
+
+    line-height:1.3;
+}
+
+.wave{
+
+    font-size:40px;
+}
+
+.banner-subtitle{
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+.stats-card{
+
+    padding:26px 20px;
+
+    border-radius:22px;
+}
+
+.stats-card i{
+
+    font-size:42px;
+}
+
+.stats-card h2{
+
+    font-size:38px;
+}
+
+.custom-card{
+
+    padding:24px 20px;
+
+    border-radius:22px;
+}
+
+.complaint-card{
+
+    padding:22px;
+
+    border-radius:20px;
+}
+
+.footer{
+
+    margin-top:40px;
+
+    padding:22px 16px;
+
+    border-radius:18px;
+}
+
+.footer-bottom{
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg custom-navbar">
+
+<div class="container-fluid px-lg-5 px-4">
+
+    <a class="navbar-brand"
+       href="/dashboard/">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>ServiQ</span>
+
+    </a>
+
+    <button class="navbar-toggler bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end"
+         id="navbarNav">
+
+        <ul class="navbar-nav align-items-lg-center">
+
+            <li class="nav-item">
+
+                <a class="nav-link nav-custom-link"
+                   href="/dashboard/">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link nav-custom-link"
+                   href="/add/">
+
+                    <i class="fa-solid fa-circle-plus"></i>
+
+                    Add Complaint
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link nav-custom-link"
+                   href="/view/">
+
+                    <i class="fa-solid fa-clipboard-list"></i>
+
+                    View Complaints
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <button class="dark-btn">
+
+                    🌙
+
+                </button>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a class="nav-link logout-btn"
+                   href="/logout/">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</nav>
+
+<!-- ================= ALERT MESSAGE ================= -->
+
+{% if messages %}
+
+<div class="container-fluid px-lg-5 px-4 mt-4">
+
+    {% for message in messages %}
+
+    <div class="alert
+                alert-success
+                alert-dismissible
+                fade
+                show
+                rounded-4
+                border-0
+                shadow-sm"
+         role="alert">
+
+        <i class="fa-solid fa-circle-check me-2"></i>
+
+        {{ message }}
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"></button>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-content">
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            © 2026 Complaint Management System |
+            Designed by ResolveX 🚀
+
+        </div>
+
+    </footer>
+
+</div>
+
+<!-- ================= BOOTSTRAP ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ================= DARK MODE ================= -->
+
+<script>
+
+const darkBtn = document.querySelector('.dark-btn');
+
+darkBtn.addEventListener('click', () => {
+
+    document.body.classList.toggle('dark-mode');
+
+});
+
+/* ================= AUTO HIDE ALERT ================= */
+
+setTimeout(() => {
+
+    let alerts = document.querySelectorAll('.alert');
+
+    alerts.forEach(alert => {
+
+        alert.style.display = 'none';
+
+    });
+
+}, 3000);
+
+</script>
+
+</body>
+
+</html>
